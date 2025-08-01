@@ -26,3 +26,19 @@ Para fazer funcionar você precisa criar um espaço virtual, além de ter que ba
 de maneira desejada, além de ter que usar do uvicorn para que o fastapi funcione.
 
 outro ponto importante é que no código é preciso de um nome e uma senha do banco de dados, de preferencia crie ou coloque o seu mesmo.
+
+# Pontos importantes para ele funcionar
+
+Precisa criar um espaço virtual escrevendo no terminal :
+python3 -m venv venv 
+source venv/bin/activate
+
+Precisa instalar as extenções:
+pip install fastapi uvicorn sqlalchemy pymysql
+
+E para rodar o código:
+uvicorn main:app --reload
+
+obs: caso ele não esteja identificando o main tenta entrar dentro da pasta usando cd{nome do arquivo}
+se vc der ls dentro do terminal TEM que estar o main.py (o main pode ser qualquer nome, mas seria o nome do seu site, o meu por simplicidade
+utilizei o main)

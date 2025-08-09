@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import pymysql 
 
 
-URL_DATABASE= 'mysql+pymysql://{your-name}:{your-password}@localhost:3306/BlogApplication'
+URL_DATABASE= 'mysql+pymysql://{your_name}:{your_password}@localhost:3306/BlogApplication'
 
 engine = create_engine(URL_DATABASE)
 

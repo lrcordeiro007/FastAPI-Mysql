@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  localhost:
+    image: mysql:8.0
+    container_name: mysql_localhost
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Destemido_007
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Destemido_007
+      MYSQL_DATABASE: BlogApplication
+    ports:
+      - "3307:3306"   
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build: .
+    container_name: fastapi_mysql_api
+    restart: always
+    depends_on:
+      - localhost
+    environment:
+      - DATABASE_URL=mysql+pymysql://root:Destemido_007@localhost:3306/BlogApplication
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+
+volumes:
+  mysql_data:

@@ -21,3 +21,4 @@ docker compose build --no-cache
 docker compose up
 ```
 Fazendo isso ele já deve gerar um container do docker de forma que você consigar entrar no link criado e você mesmo criar usuários e postagens.
+Para parar o código de funcionar é só dar `Control C`

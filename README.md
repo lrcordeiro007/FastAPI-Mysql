@@ -1,16 +1,16 @@
 # Objetivo do Projeto 
 
-O objetivo principal desse projeto é conseguir contruir uma simples aplicação dos meus conhecimentos sobre `API`, `Banco de Dados` e `Docker`, afim de testar eles e se possível utilizar de outras formas em situações futuras.
+O objetivo principal deste projeto é conseguir construir uma simples aplicação com base nos meus conhecimentos sobre `API`, `Banco de Dados` e `Docker`, a fim de testá-los e, se possível, utilizá-los de outras formas em situações futuras.
 
-Nessa aplicação eu utilizei como `API` o `FastAPI`, o qual é simples de enteder, funcionar em python e ter uma documentação própria e automática, o que facilita na hora de testar o código.
+Nesta aplicação, utilizei como `API` o `FastAPI`, que é simples de entender, funciona em Python e possui documentação própria e automática, o que facilita na hora de testar o código.
 
-Para `Banco de Dados` eu utilizei o `MySQL` o qual já muito popular e fácil de colocar em prática.
+Para `Banco de Dados`, utilizei o `MySQL`, que já é muito popular e fácil de colocar em prática.
 
-E por fim utilizei o `Docker` para que em situações futuras eu consiga desenvolver códigos mais elaborados e consiga colocar ele para rodar em qualquer computador e esse projeto foi uma oportunidade perfeita para poder começar.
+Por fim, utilizei o `Docker` para que, em situações futuras, eu consiga desenvolver códigos mais elaborados e executá-los em qualquer computador. Este projeto foi uma oportunidade perfeita para começar.
 
 # Como que ele funciona
 
-Esse projeto de basea em uma ideia semelhante a um Twiter, ele possui os seus usuários com seus nomes , `username` e seus `id`, além disso é possivel postar textos com `títulos` e o `corpo do texto`, como também um `id` para cada postagem feita.
+Este projeto se baseia em uma ideia semelhante à do Twitter. Ele possui usuários com seus nomes, `username` e `id`. Além disso, é possível postar textos com `títulos` e o `corpo do texto`, bem como um `id` para cada postagem feita.
 
 
 `Ainda não introduzi uma ideia de login, apenas tem as funções de criar usuários e postagens`

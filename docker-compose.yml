@@ -1,4 +1,4 @@
-version: "3.9"
+
 
 services:
   db:
@@ -6,10 +6,10 @@ services:
     container_name: mysql_db
     restart: on-failure
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: Destemido_007
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
+      MYSQL_DATABASE: Twitter
     ports:
       - "3307:3306"
     volumes:
@@ -22,7 +22,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=mysql+pymysql://user:password@db:3306/mydatabase
+      - DATABASE_URL=mysql+pymysql://user:password@db:3306/Twitter
     ports:
       - "8000:8000"
     volumes:

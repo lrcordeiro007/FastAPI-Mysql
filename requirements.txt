@@ -3,3 +3,10 @@ uvicorn
 sqlalchemy
 pymysql
 cryptography
+jinja2
+python-multipart
+python-jose
+passlib 
+bcrypt
+pydantic
+itsdangerous

@@ -9,6 +9,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
@@ -16,11 +17,35 @@
         }
 
         .container {
-            background: white;
+            background: gray;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 1000px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
+            width: 25%; 
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .posts-container {
+            background: gray;
+            padding: 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+            width: 30%;
+            max-width: 600px;
+            margin-top: 0px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .post-item {
+            border-bottom: 0x solid #eee;
+            padding: 10px 0;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
         }
 
         form {
@@ -38,44 +63,70 @@
             margin-top: 5px;
             padding: 8px;
             margin-bottom: 10px;
-            width: 200px;
+            width: 100%;
+            box-sizing: border-box; 
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+
         }
 
-       button {
+        button {
             margin-top: 10px;
             padding: 8px 15px;
             cursor: pointer;
             border: none;
             background-color: #007BFF;
-            color: white;
+            color: black;
             border-radius: 5px;
             font-size: 14px;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+
         }
 
         button:hover {
             background-color: #0056b3;
         }
 
-       a {
-            margin-top: 15px;
+        a {
+            margin-top: 10px;
             display: inline-block;
             text-decoration: none;
             color: #007BFF;
         }
     </style>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 
 <body>
     <div class="container">
-    <h2>Post</h2>
+        <h2>POST</h2>
 
-    <form action="/welcome" method="post">
-        <label>What would you like to post?</label>
-        <input type="text" name="post" required><br><br>
-        <button type="submit">POST</button>
-    </form>
-    <a href="/login">
-    <button>Logout</button>
-    </a>
+        <form action="/post_message" method="post">
+            <label for="post">What would you like to post?</label>
+            <input type="text" id="post" name="post" required>
+            <button type="submit">POST</button>
+        </form>
+        <a href="/login">
+            <button>Logout</button>
+        </a>
     </div>
+
+    <div class="posts-container">
+        <h3>Recent Posts</h3>
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post-item">
+                    <p>{{ post.post }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhuma postagem ainda.</p>
+        {% endif %}
+    </div>
+    <div class= >
+
+    </div>
+
 </body>
 </html>

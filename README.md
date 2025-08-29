@@ -53,7 +53,7 @@ Construa e inicie os contêineres:
 
 ```Bash
 
-docker-compose up --build --no-cache
+docker-compose up --build 
 ```
 Isso fará o download da imagem do MySQL, construirá a imagem da aplicação FastAPI e iniciará ambos os serviços. O contêiner do FastAPI estará acessível na porta 8000.
 

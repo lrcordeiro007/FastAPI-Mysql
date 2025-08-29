@@ -7,7 +7,7 @@
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            height: 70vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,10 +16,10 @@
         }
 
          .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: gray;
+            padding: 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 10px rgba(10, 20, 0, 7);
             text-align: center;
         }
 
@@ -39,17 +39,22 @@
             padding: 8px;
             margin-bottom: 10px;
             width: 200px;
+            box-shadow: 0 8px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            border: none;
+
         }
 
         button {
-            margin-top: 10px;
+            margin-top: 8px;
             padding: 8px 15px;
             cursor: pointer;
             border: none;
             background-color: #007BFF;
-            color: white;
-            border-radius: 5px;
-            font-size: 14px;
+            color: black;
+            border-radius: 50px;
+            font-size: 15px;
+            box-shadow: 0 8px 5px rgba(0, 0, 0, 0.5);
         }
 
         button:hover {
@@ -57,20 +62,18 @@
         }
 
        a {
-            margin-top: 15px;
+            margin-top: 10px;
             display: inline-block;
             text-decoration: none;
             color: #007BFF;
         }
     </style>
-
+    <link rel="stylesheet" href="/static/style.css">
 <body>
     <div class="container">
     <h2>Login</h2>
 
-    {% if error %}
-        <p style = "color: red;">{{ error }}</p>
-    {% endif %}
+
     <form action="/login" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br>

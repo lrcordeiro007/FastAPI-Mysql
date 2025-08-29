@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends, status, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Annotated
 import models
@@ -18,6 +19,7 @@ templates = Jinja2Templates(directory="templates")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 models.Base.metadata.create_all(bind=engine)
 app.add_middleware(SessionMiddleware, secret_key = SECRET_KEY)
+app.mount("/static", StaticFiles(directory="static"), name="static")   
 
 
 class Post(BaseModel):
@@ -97,8 +99,10 @@ async def register(
     return response
 
 @app.get("/welcome", response_class = HTMLResponse)
-async def welcome(request : Request):
-    return templates.TemplateResponse("/welcome.html", {"request": request})
+async def welcome(request : Request, db: Session = Depends(get_db)):
+
+    all_posts = db.query(models.Post).order_by(models.Post.id.desc()).all()
+    return templates.TemplateResponse("/welcome.html", {"request": request, "posts": all_posts})
 
 @app.post("/welcome", response_class= HTMLResponse)
 async def welcome_page(
@@ -113,7 +117,28 @@ async def welcome_page(
     db.commit()
     db.refresh(new_post)
 
-    return templates.TemplateResponse("/welcome.html", {"request": request})
+    all_posts = db.query(models.Post).order_by(models.Post.id.desc()).all()
+
+    return templates.TemplateResponse("/welcome.html", {"request": request, "posts": all_posts})
+
+@app.post("/post_message", response_class=RedirectResponse)
+async def post_message(
+    request: Request,
+    db: Session = Depends(get_db),
+    post: str = Form(...)
+):
+    user_id = request.session.get("user_id")
+
+    if not user_id:
+        return RedirectResponse(url="/login", status_code=303) # Redireciona se o usuário não estiver logado
+
+    new_post = models.Post(post=post, user_id=user_id)
+    db.add(new_post)
+    db.commit()
+    db.refresh(new_post)
+
+    # Redireciona para a rota GET, que irá buscar e exibir os posts atualizados
+    return RedirectResponse(url="/welcome", status_code=303)
 
 
 
